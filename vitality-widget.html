@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vitality Modification Company — Premium Cerakote & Milling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c8a84b;
+      --gold-light: #e0c06a;
+      --gold-dark: #9a7d32;
+      --black: #0d0d0d;
+      --dark: #141414;
+      --dark2: #1a1a1a;
+      --dark3: #222;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: 3px; color: var(--gold);
+    }
+    .nav-logo span { color: #fff; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold) !important; color: #000 !important;
+      padding: 8px 20px; border-radius: 3px;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 40px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(200,168,75,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 80% at 10% 80%, rgba(200,168,75,0.04) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,168,75,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,168,75,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 8vw, 96px);
+      line-height: 0.95; letter-spacing: 2px; color: #fff; margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub {
+      font-size: 17px; font-weight: 300; color: #aaa;
+      line-height: 1.7; max-width: 520px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: var(--gold); color: #000;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      border: none; border-radius: 3px; cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: transparent; color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      border: 1px solid var(--gold-dark); border-radius: 3px;
+      cursor: pointer; text-decoration: none; transition: border-color .2s, background .2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); background: rgba(200,168,75,0.06); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 56px;
+      padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 100px 40px; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 2px; color: #fff; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.7; margin-bottom: 56px; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px;
+    }
+    .service-card {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 36px 32px; position: relative; overflow: hidden; transition: border-color .2s;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 0; background: var(--gold); transition: height .3s;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { border-color: rgba(200,168,75,0.3); }
+    .service-icon { font-size: 28px; margin-bottom: 20px; }
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; color: #fff; margin-bottom: 10px;
+    }
+    .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .service-price { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); }
+    .service-price-label { font-size: 11px; color: #555; margin-top: 2px; }
+
+    /* ── PROCESS ── */
+    .process-section {
+      background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .process-step { padding: 32px 28px; border-right: 1px solid var(--border); }
+    .process-step:last-child { border-right: none; }
+    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(200,168,75,0.15); line-height: 1; margin-bottom: 12px; }
+    .step-name { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .step-desc { font-size: 12px; color: #666; line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 900px; }
+    .price-card { background: var(--dark); border: 1px solid var(--border); border-radius: 6px; padding: 32px 28px; position: relative; }
+    .price-card.featured { border-color: var(--gold-dark); background: linear-gradient(135deg, #1a1700 0%, #1c1800 100%); }
+    .price-badge {
+      position: absolute; top: -1px; right: 20px;
+      background: var(--gold); color: #000;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 0 0 4px 4px;
+    }
+    .price-tier { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--gold); margin-bottom: 4px; }
+    .price-firearm { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+    .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: #fff; line-height: 1; margin-bottom: 4px; }
+    .price-amount sup { font-size: 24px; vertical-align: top; margin-top: 10px; }
+    .price-from { font-size: 11px; color: #555; margin-bottom: 24px; }
+    .price-features { list-style: none; }
+    .price-features li {
+      font-size: 13px; color: #aaa; padding: 7px 0;
+      border-bottom: 1px solid #1e1e1e; display: flex; gap: 8px; align-items: baseline;
+    }
+    .price-features li::before { content: '—'; color: var(--gold); font-size: 10px; flex-shrink: 0; }
+    .price-features li:last-child { border-bottom: none; }
+
+    /* ── GUARANTEE ── */
+    .guarantee { text-align: center; max-width: 600px; margin: 0 auto; padding: 80px 40px; }
+    .guarantee h2 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
+    .guarantee p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark2); border-top: 1px solid var(--border);
+      padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--gold); }
+    .footer-info { font-size: 12px; color: #555; line-height: 1.8; }
+    .footer-info a { color: var(--gold-dark); text-decoration: none; }
+    .footer-hours { font-size: 11px; color: #444; text-align: right; }
+
+    /* ══════════════════════════════════════
+       VITALITY CHAT WIDGET
+    ══════════════════════════════════════ */
+    #vm-launcher {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--gold); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .18s, box-shadow .18s;
+      box-shadow: 0 4px 20px rgba(200,168,75,.4);
+    }
+    #vm-launcher:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(200,168,75,.55); }
+    #vm-badge {
+      position: absolute; top: -3px; right: -3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #e74c3c; color: #fff; font-size: 10px;
+      font-weight: 700; display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--black); animation: badge-pulse 2.5s infinite;
+    }
+    @keyframes badge-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+    #vm-popup {
+      position: fixed; bottom: 96px; right: 24px; z-index: 9998;
+      width: 375px; max-height: 600px;
+      background: #1c1c1c; border: 1px solid #2e2e2e; border-radius: 18px;
+      display: flex; flex-direction: column; overflow: hidden;
+      transition: opacity .22s, transform .22s;
+      box-shadow: 0 24px 64px rgba(0,0,0,.75);
+    }
+    #vm-popup.vm-closed { opacity: 0; pointer-events: none; transform: scale(.93) translateY(12px); }
+    #vm-popup.vm-open   { opacity: 1; pointer-events: all; transform: scale(1) translateY(0); }
+    .vm-header {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+      border-bottom: 1px solid #2e2e2e;
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .vm-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: #111;
+      flex-shrink: 0; letter-spacing: 1px;
+    }
+    .vm-hname { font-size: 14px; font-weight: 600; color: #fff; }
+    .vm-hstat { font-size: 11px; color: var(--gold); margin-top: 2px; }
+    .vm-close {
+      margin-left: auto; width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: none; cursor: pointer;
+      color: #777; font-size: 15px; display: flex; align-items: center; justify-content: center;
+      transition: background .15s, color .15s;
+    }
+    .vm-close:hover { background: rgba(255,255,255,.14); color: #ccc; }
+    .vm-msgs {
+      flex: 1; overflow-y: auto; padding: 14px;
+      display: flex; flex-direction: column; gap: 10px; min-height: 0;
+    }
+    .vm-msgs::-webkit-scrollbar { width: 4px; }
+    .vm-msgs::-webkit-scrollbar-track { background: transparent; }
+    .vm-msgs::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+    .vm-msg {
+      max-width: 85%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13px; line-height: 1.65; word-break: break-word;
+      font-family: 'Barlow', sans-serif;
+    }
+    .vm-msg.bot { background: #252525; color: #e0e0e0; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #333; }
+    .vm-msg.user { background: var(--gold); color: #111; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
+    .vm-msg.sys { background: transparent; color: #555; font-size: 11px; align-self: center; padding: 3px 8px; max-width: 100%; text-align: center; }
+    .vm-msg.err { background: #2d1a1a; color: #e07070; font-size: 12px; border-radius: 8px; align-self: flex-start; border: 1px solid #5c2020; }
+    .vm-msg.success { background: #1a2d1a; color: #70e070; font-size: 12px; border-radius: 8px; align-self: flex-start; border: 1px solid #205c20; }
+    .vm-qbtns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .vm-qbtn {
+      padding: 5px 12px; border: 1px solid rgba(200,168,75,0.5);
+      border-radius: 20px; background: transparent; color: var(--gold);
+      font-family: 'Barlow', sans-serif; font-size: 11px;
+      cursor: pointer; transition: all .15s;
+    }
+    .vm-qbtn:hover { background: var(--gold); color: #111; }
+    .vm-typing {
+      display: flex; align-items: center; gap: 4px;
+      padding: 10px 14px; background: #252525; border-radius: 14px;
+      border-bottom-left-radius: 4px; align-self: flex-start; border: 1px solid #333;
+    }
+    .vm-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: vmb 1.2s infinite; }
+    .vm-typing span:nth-child(2) { animation-delay: .2s; }
+    .vm-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes vmb { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+    .vm-progress { padding: 10px 16px; background: #1e1e1e; border-top: 1px solid #2e2e2e; flex-shrink: 0; }
+    .vm-progress-label { font-size: 10px; color: #555; margin-bottom: 6px; }
+    .vm-progress-bar { height: 3px; background: #2a2a2a; border-radius: 2px; overflow: hidden; }
+    .vm-progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width .4s; }
+    .vm-input-row { padding: 10px 12px; border-top: 1px solid #2e2e2e; display: flex; gap: 8px; flex-shrink: 0; background: #1c1c1c; }
+    .vm-input-row input {
+      flex: 1; padding: 9px 14px; border: 1px solid #333; border-radius: 22px;
+      background: #252525; color: #e8e8e8; font-size: 13px;
+      font-family: 'Barlow', sans-serif; outline: none; transition: border-color .15s;
+    }
+    .vm-input-row input:focus { border-color: var(--gold); }
+    .vm-input-row input:disabled { opacity: .4; }
+    .vm-send {
+      width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: opacity .15s;
+    }
+    .vm-send:disabled { opacity: .4; cursor: not-allowed; }
+    .vm-branding { padding: 5px 0 7px; text-align: center; font-size: 10px; color: #333; background: #1c1c1c; }
+    .vm-summary {
+      background: #1e1e1e; border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 10px; padding: 14px 16px; margin-top: 8px; width: 100%;
+    }
+    .vm-summary-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      color: var(--gold); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .vm-summary-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid #2a2a2a; }
+    .vm-summary-row:last-child { border-bottom: none; }
+    .vm-summary-label { color: #666; }
+    .vm-summary-val { color: #e0e0e0; font-weight: 500; text-align: right; max-width: 55%; }
+    .vm-submit-btn {
+      width: 100%; margin-top: 12px; padding: 11px;
+      background: var(--gold); color: #111; border: none; border-radius: 8px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase;
+      transition: opacity .15s, transform .1s;
+    }
+    .vm-submit-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .hero { padding: 90px 20px 40px; }
+      .section { padding: 60px 20px; }
+      footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+      .footer-hours { text-align: center; }
+      #vm-popup { width: calc(100vw - 32px); right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Vitality <span>Mod Co</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#guarantee">Guarantee</a>
+      <a href="#" class="nav-cta" onclick="VM.toggle();return false;">Get a Quote</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Nation's Premier Cerakote Applicator</div>
+      <h1>Built<br/>To <em>Last.</em><br/>Made To<br/><em>Impress.</em></h1>
+      <p class="hero-sub">Military-grade Cerakote finishes and precision CNC slide milling. Every job fully disassembled, sandblasted, and backed by a lifetime guarantee.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="VM.toggle();return false;">💬 Get a Quote</a>
+        <a href="#pricing" class="btn-secondary">View Pricing</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-val">±.001"</div><div class="stat-label">CNC Tolerance</div></div>
+        <div><div class="stat-val">∞</div><div class="stat-label">Lifetime Guarantee</div></div>
+        <div><div class="stat-val">100%</div><div class="stat-label">Certified Staff</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Our Services</div>
+    <p class="section-sub">Every certified applicator on staff. Every job backed by our lifetime guarantee.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <div class="service-name">Cerakote Finishing</div>
+        <div class="service-desc">Thousands of colors, patterns, and custom designs. Full disassembly, controlled sandblasting, and precision application in our certified environment.</div>
+        <div class="service-price">$350+</div>
+        <div class="service-price-label">Pistol packages starting at</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-name">Slide Milling</div>
+        <div class="service-desc">In-house Haas VF-series CNC milling at ±0.001" tolerances. DPP, MOS, RMR, and RMRcc cuts available. Standalone or bundled with Cerakote.</div>
+        <div class="service-price">$200</div>
+        <div class="service-price-label">Stand-alone · $150 bundled</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">À La Carte Parts</div>
+        <div class="service-desc">Single parts, slides, frames, barrels, stocks. Mix and match. Bundle 3+ items for 15% off. No FFL required for components — ship directly.</div>
+        <div class="service-price">$75+</div>
+        <div class="service-price-label">Per small part · $150 major parts</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section" id="process">
+    <div style="padding: 60px 40px 20px;">
+      <div class="section-label">How It Works</div>
+      <div class="section-title">Our Process</div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">01</div><div class="step-name">Consultation</div><div class="step-desc">We understand your needs and performance requirements before a single screw is touched.</div></div>
+      <div class="process-step"><div class="step-num">02</div><div class="step-name">Disassembly</div><div class="step-desc">Complete takedown of the firearm — every part inspected and documented.</div></div>
+      <div class="process-step"><div class="step-num">03</div><div class="step-name">Degreasing</div><div class="step-desc">Rigorous cleaning removes all oils, debris, and contaminants down to bare metal.</div></div>
+      <div class="process-step"><div class="step-num">04</div><div class="step-name">Sandblasting</div><div class="step-desc">Controlled media blasting removes all factory coatings — the step most shops skip.</div></div>
+      <div class="process-step"><div class="step-num">05</div><div class="step-name">Application</div><div class="step-desc">Certified applicators apply Cerakote in a controlled, temperature-regulated environment.</div></div>
+      <div class="process-step"><div class="step-num">06</div><div class="step-name">QC + Delivery</div><div class="step-desc">Quality checks at every step. Meticulous reassembly. Shipped back or picked up.</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="section-label">Transparent Pricing</div>
+    <div class="section-title">Pistol Packages</div>
+    <p class="section-sub">All packages include full disassembly, degreasing, sandblasting, Cerakote application, reassembly, and lifetime guarantee.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Essential</div>
+        <div class="price-firearm">Pistol / Revolver</div>
+        <div class="price-amount"><sup>$</sup>350</div>
+        <div class="price-from">Single color</div>
+        <ul class="price-features">
+          <li>1 Cerakote color</li>
+          <li>1 color-matched magazine</li>
+          <li>Full disassembly & sandblast</li>
+          <li>Lifetime guarantee</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Signature</div>
+        <div class="price-firearm">Pistol / Revolver</div>
+        <div class="price-amount"><sup>$</sup>450</div>
+        <div class="price-from">Multi-color & patterns</div>
+        <ul class="price-features">
+          <li>2–4 Cerakote colors</li>
+          <li>1 pattern (camo, battle-worn, etc.)</li>
+          <li>2 color-matched magazines</li>
+          <li>Full disassembly & sandblast</li>
+          <li>Lifetime guarantee</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Masterpiece</div>
+        <div class="price-firearm">Pistol / Revolver</div>
+        <div class="price-amount"><sup>$</sup>750<span style="font-size:22px">+</span></div>
+        <div class="price-from">Fully custom</div>
+        <ul class="price-features">
+          <li>5+ Cerakote colors</li>
+          <li>Multiple patterns</li>
+          <li>Private design consultation</li>
+          <li>3 color-matched magazines</li>
+          <li>Full disassembly & sandblast</li>
+          <li>Lifetime guarantee</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#555;margin-top:24px;">Rifles start at $450 · Shotguns start at $400 · Slide cut add-on: +$150 bundled</p>
+  </section>
+
+  <section style="background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);" id="guarantee">
+    <div class="guarantee">
+      <div style="font-size:48px;margin-bottom:20px;">🛡️</div>
+      <h2>Lifetime Guarantee</h2>
+      <p>If Cerakote ever wears off through normal use, we re-coat it — free. No questions asked. Every job we do is backed by this promise, because we stand fully behind the quality of our work and the durability of the finish.</p>
+      <br/>
+      <a href="#" class="btn-primary" onclick="VM.toggle();return false;" style="display:inline-flex;margin-top:8px;">💬 Start a Quote</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-logo">Vitality Mod Co</div>
+      <div class="footer-info" style="margin-top:8px;">
+        12209 NE Fourth Plain Blvd Unit GG, Vancouver, WA 98682<br/>
+        <a href="tel:3608396679">(360) 839-6679</a> · <a href="https://vitalitymodco.com">vitalitymodco.com</a>
+      </div>
+    </div>
+    <div class="footer-hours">
+      Mon — By Appointment<br/>
+      Tue–Fri — 8am to 4:30pm<br/>
+      Sat — 8am to 11am<br/>
+      Sun — By Appointment
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       VITALITY MODCO CHAT WIDGET v3.0
+       Paste everything from here to END WIDGET into your site
+  ═══════════════════════════════════════════ -->
+
+  <button id="vm-launcher" aria-label="Chat with Vitality" onclick="VM.toggle()">
+    <div id="vm-badge">1</div>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+    </svg>
+  </button>
+
+  <div id="vm-popup" class="vm-closed">
+    <div class="vm-header">
+      <div class="vm-avatar">VM</div>
+      <div>
+        <div class="vm-hname">Vitality Assistant</div>
+        <div class="vm-hstat">● Online — Cerakote &amp; Milling Experts</div>
+      </div>
+      <button class="vm-close" onclick="VM.toggle()">✕</button>
+    </div>
+    <div class="vm-msgs" id="vm-msgs"></div>
+    <div class="vm-progress" id="vm-progress" style="display:none">
+      <div class="vm-progress-label" id="vm-progress-label">Gathering your order info...</div>
+      <div class="vm-progress-bar"><div class="vm-progress-fill" id="vm-progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="vm-input-row">
+      <input id="vm-input" placeholder="Ask about pricing, process, FFL..." onkeydown="if(event.key==='Enter'&&!event.shiftKey)VM.send()"/>
+      <button class="vm-send" id="vm-send" onclick="VM.send()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <line x1="22" y1="2" x2="11" y2="13" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2" fill="#111"/>
+        </svg>
+      </button>
+    </div>
+    <div class="vm-branding">Powered by Vitality ModCo · vitalitymodco.com</div>
+  </div>
+
+  <script>
+  // ═══════════════════════════════════════════════════════════
+  //  CONFIGURATION — fill in your keys before going live
+  // ═══════════════════════════════════════════════════════════
+  const VM_CONFIG = {
+    // Anthropic API key — get at console.anthropic.com
+    // SECURITY: For public sites, proxy through Cloudflare Worker (see VITALITY-SETUP.md)
+    apiKey: "YOUR_API_KEY_HERE",
+    model:  "claude-sonnet-4-5",
+
+    // Order notification emails
+    notifyEmails: ["orders@vitalitymodco.com", "manager@vitalitymodco.com"],
+
+    // Google Sheets Web App URL — paste after deploying Apps Script
+    googleSheetsUrl: "YOUR_GOOGLE_SHEETS_WEBAPP_URL",
+
+    // EmailJS (optional backup email channel) — sign up free at emailjs.com
+    emailjsServiceId:  "YOUR_EMAILJS_SERVICE_ID",
+    emailjsTemplateId: "YOUR_EMAILJS_TEMPLATE_ID",
+    emailjsPublicKey:  "YOUR_EMAILJS_PUBLIC_KEY",
+  };
+
+  // ═══════════════════════════════════════════════════════════
+  //  KNOWLEDGE BASE — everything Claude knows about Vitality
+  // ═══════════════════════════════════════════════════════════
+  const KNOWLEDGE_BASE = `
+COMPANY: Vitality Modification Company LLC
+WEBSITE: vitalitymodco.com
+ADDRESS: 12209 NE Fourth Plain Blvd Unit GG, Vancouver, WA 98682
+PHONE: (360)-839-6679
+HOURS: Mon By Appointment | Tue-Fri 8am-4:30pm | Sat 8am-11am | Sun By Appointment
+
+ABOUT:
+- Nation's top-rated Cerakote applicator. Military-grade finishes.
+- Entire shop staffed exclusively by certified, fully-licensed Cerakote applicators.
+- Process: full disassembly → degreasing → controlled sandblasting → precision application → QC → reassembly.
+- Lifetime guarantee: if Cerakote ever wears off (excluding abusive damage), they re-coat for free.
+- Trusted by military, law enforcement, and serious gun enthusiasts.
+- Precision slide milling done in-house on Haas VF-series CNC. Tolerances held within ±0.001".
+
+PISTOL/REVOLVER PACKAGES (include disassembly, degreasing, sandblasting, reassembly, lifetime guarantee):
+- Essential: $350 — 1 color, 1 color-matched magazine
+- Signature: $450 — 2-4 colors, 1 pattern, 2 color-matched magazines
+- Masterpiece: from $750 — 5+ colors, multiple patterns, private design consultation, 3 magazines
+- Add slide cut to any pistol package: +$150
+
+RIFLE PACKAGES:
+- Essential: $450 — 1 color, 1 magazine | Signature: $550 — 2-4 colors, 1 pattern, 2 magazines | Masterpiece: from $850
+
+SHOTGUN PACKAGES:
+- Essential: $400 — 1 color | Signature: $500 — 2-4 colors, 1 pattern | Masterpiece: from $800
+
+À LA CARTE (single color, fast lane):
+PISTOLS/REVOLVERS: Major parts (Slide, Frame, Barrel, Cylinder): $150 each | Small parts (Trigger, Controls, Magazine, Baseplate): $75 each
+SHOTGUNS: Major parts (Barrel, Receiver, Stock, Fore-end): $150 | Small parts: $75
+RIFLES: Major parts (Upper, Lower, Handguard, Barrel, Stock): $150 | Small parts (Buffer Tube, Gas Block, Magazine): $75
+BUNDLE DISCOUNT: 3+ à la carte items = 15% off
+
+OPTICS & LIGHTS: Red-dots, scopes, weapon lights: $200 each
+NOTE: Most manufacturers cancel warranty when Cerakote applied. Vitality masks carefully but can't cover warranty claims.
+
+SLIDE MILLING (in-house Haas VF-series CNC, ±0.001" tolerances):
+- Cuts available: DPP, MOS, RMR, RMRcc
+- Standalone rate: $200 | Bundled with Cerakote: $150 (saves $50)
+- Standard turnaround: 14-21 business days
+- Priority Bench: 7-14 business days (+15% surcharge, limited slots)
+- $99 deposit to lock bench, fully applied to order
+
+FFL SHIPPING:
+- Complete firearms MUST ship via FFL holder or gun store
+- Components/parts (barrels, magazines, slides) can ship directly — no FFL required
+- All shipments require a signed Vitality quote before work begins
+- Call (360)-839-6679 for FFL guidance
+
+CERAKOTE COLORS: Thousands available. Full catalog at cerakote.com/shop/cerakote-coating
+
+PROCESS STEPS:
+1. Consultation | 2. Disassembly | 3. Degreasing | 4. Sandblasting
+5. Cerakote Application | 6. Quality Control | 7. Reassembly | 8. Delivery
+`.trim();
+
+  // ═══════════════════════════════════════════════════════════
+  //  ORDER INTAKE QUESTIONS — maps to Google Sheets columns
+  // ═══════════════════════════════════════════════════════════
+  const ORDER_FIELDS = [
+    { key: "name",            label: "Full Name",          question: "What's your full name?" },
+    { key: "email",           label: "Email Address",      question: "Best email address to reach you?" },
+    { key: "phone",           label: "Phone Number",       question: "And your phone number?" },
+    { key: "firearm_type",    label: "Firearm Type",       question: "What type of firearm? (Pistol/Revolver, Rifle, or Shotgun)" },
+    { key: "firearm_make",    label: "Make & Model",       question: "Make and model? (e.g., Glock 19, AR-15, Mossberg 500)" },
+    { key: "service_type",    label: "Service Requested",  question: "Which service?\n\n• Full Package (Essential / Signature / Masterpiece)\n• À La Carte (specific parts only)\n• Slide Milling only\n• Cerakote + Slide Milling combo" },
+    { key: "color_desc",      label: "Color / Pattern",    question: "Describe your color(s) or pattern. (e.g., 'Flat Dark Earth', 'multicam camo', 'battle-worn black and gold', 'custom — need consultation')" },
+    { key: "parts_list",      label: "Specific Parts",     question: "Which parts to coat? (or 'full firearm' for a complete package)" },
+    { key: "slide_cut",       label: "Slide Cut",          question: "Need a slide cut / optic cut? If yes — which footprint? (DPP, MOS, RMR, RMRcc, or None)" },
+    { key: "turnaround",      label: "Turnaround",         question: "Standard turnaround (14-21 business days) or Priority Bench (7-14 days, +15% surcharge)?" },
+    { key: "shipping_method", label: "Shipping Method",    question: "How will you send the firearm?\n\n• Drop off in person (Vancouver, WA)\n• Ship via FFL dealer\n• Ship parts directly (no FFL needed for components)" },
+    { key: "notes",           label: "Additional Notes",   question: "Anything else we should know? Special requests, references, questions? (Type 'none' to skip)" },
+  ];
+
+  // ═══════════════════════════════════════════════════════════
+  //  WIDGET ENGINE
+  // ═══════════════════════════════════════════════════════════
+  const VM = (() => {
+    let open = false, busy = false;
+    let history = [];
+    let mode = "chat"; // "chat" | "intake" | "review" | "done"
+    let intakeStep = 0;
+    let orderData = {};
+
+    const $ = id => document.getElementById(id);
+    const msgs    = () => $("vm-msgs");
+    const input   = () => $("vm-input");
+    const sendBtn = () => $("vm-send");
+
+    function sysPrompt() {
+      return `You are the Vitality Modification Company's expert customer assistant, embedded on vitalitymodco.com.
+
+Role: Answer questions about services, pricing, process, and FFL shipping. Be enthusiastic but professional. Use the knowledge base below. When a customer is ready to order or get a quote, append [START_INTAKE] on its own line at the end of your message.
+
+Tone: Confident, expert, tactical. Short punchy sentences. Direct answers. Mention the lifetime guarantee when relevant. Never be generic.
+
+VITALITY KNOWLEDGE BASE:
+${KNOWLEDGE_BASE}
+
+RULES:
+- Never invent prices or services not listed above.
+- For colors, direct to: cerakote.com/shop/cerakote-coating
+- For FFL questions: explain complete firearms must go through FFL, parts ship direct.
+- When customer says they're ready to order, want a quote, or want to "lock in" — end your message with [START_INTAKE] on its own line.
+- Keep responses under 100 words unless deep detail is genuinely needed.`;
+    }
+
+    function addMsg(text, type) {
+      const div = document.createElement("div");
+      div.className = "vm-msg " + type;
+      div.textContent = text;
+      msgs().appendChild(div);
+      msgs().scrollTop = msgs().scrollHeight;
+      return div;
+    }
+
+    function showTyping() {
+      const d = document.createElement("div"); d.id = "vm-typing"; d.className = "vm-typing";
+      d.innerHTML = "<span></span><span></span><span></span>";
+      msgs().appendChild(d); msgs().scrollTop = msgs().scrollHeight;
+    }
+    function hideTyping() { const t = $("vm-typing"); if (t) t.remove(); }
+    function setEnabled(on) { input().disabled = !on; sendBtn().disabled = !on; }
+
+    function updateProgress() {
+      const total = ORDER_FIELDS.length;
+      const pct = Math.round((intakeStep / total) * 100);
+      $("vm-progress").style.display = "block";
+      $("vm-progress-fill").style.width = pct + "%";
+      $("vm-progress-label").textContent = `Order form: ${intakeStep} of ${total} questions`;
+    }
+
+    // ── Claude API call ──
+    async function callClaude(userMsg) {
+      history.push({ role: "user", content: userMsg });
+      showTyping(); busy = true; setEnabled(false);
+      try {
+        const res = await fetch("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": VM_CONFIG.apiKey,
+            "anthropic-version": "2023-06-01",
+          },
+          body: JSON.stringify({
+            model: VM_CONFIG.model,
+            max_tokens: 800,
+            system: sysPrompt(),
+            messages: history,
+          }),
+        });
+        hideTyping(); busy = false;
+        if (!res.ok) {
+          const e = await res.json().catch(() => ({}));
+          addMsg("API error: " + (e.error?.message || `HTTP ${res.status}`), "err");
+          history.pop(); setEnabled(true); return;
+        }
+        const data = await res.json();
+        const raw  = data.content.map(b => b.text || "").join("");
+        history.push({ role: "assistant", content: raw });
+        if (raw.includes("[START_INTAKE]")) {
+          addMsg(raw.replace("[START_INTAKE]", "").trim(), "bot");
+          setTimeout(() => startIntake(), 800);
+        } else {
+          addMsg(raw.trim(), "bot");
+        }
+      } catch (e) {
+        hideTyping(); busy = false;
+        addMsg("Network error. Please try again or call (360)-839-6679.", "err");
+        history.pop();
+      }
+      setEnabled(true);
+    }
+
+    // ── Demo mode (no API key needed) ──
+    function demoReply(txt) {
+      const t = txt.toLowerCase();
+      if (t.includes("price") || t.includes("cost") || t.includes("how much") || t.includes("pricing")) {
+        return { text: "Pistol packages: Essential $350 (1 color), Signature $450 (2-4 colors + pattern), Masterpiece $750+ (full custom). Rifles start at $450, shotguns $400. À la carte: $75 per small part, $150 per major part. Bundle 3+ for 15% off. Ready to get a quote?", start: false };
+      }
+      if (t.includes("process") || t.includes("how does") || t.includes("how do you") || t.includes("steps")) {
+        return { text: "Full disassembly → rigorous degreasing → controlled sandblasting (removes all factory coatings to bare metal) → precision Cerakote application by certified applicators → QC at every step → reassembly. Every single job comes with our lifetime guarantee. Want to lock in your bench?", start: false };
+      }
+      if (t.includes("ffl") || t.includes("ship")) {
+        return { text: "Complete firearms ship through an FFL dealer or gun store. Individual parts (slides, barrels, magazines) ship directly to us — no FFL needed. All shipments require a signed quote first. Need help finding an FFL near you? Call us: (360)-839-6679.", start: false };
+      }
+      if (t.includes("slide") || t.includes("optic") || t.includes("mill") || t.includes("cut") || t.includes("rmr") || t.includes("dpp") || t.includes("mos")) {
+        return { text: "In-house Haas VF-series CNC — tolerances held to ±0.001\". Cuts: DPP, MOS, RMR, RMRcc. Standalone: $200. Bundled with Cerakote: $150. Standard turnaround 14-21 days, Priority Bench 7-14 days (+15%). Ready to lock your bench?", start: false };
+      }
+      if (t.includes("guarantee") || t.includes("warranty")) {
+        return { text: "Lifetime guarantee — if Cerakote ever wears off through normal use, we re-coat it free. No questions asked. Our entire team is certified and we QC before and after every single step. It's why military and law enforcement trust us.", start: false };
+      }
+      if (t.includes("turnaround") || t.includes("how long") || t.includes("time") || t.includes("fast")) {
+        return { text: "Standard: 14-21 business days. Priority Bench: 7-14 business days (+15% surcharge, limited slots). A $99 deposit locks your bench — fully credited to your order. Want to grab a Priority Bench slot?", start: false };
+      }
+      if (t.includes("color") || t.includes("colour") || t.includes("pattern") || t.includes("camo")) {
+        return { text: "Thousands of colors and patterns — flat tactical tones, multicam, battle-worn, topographic, dual-tone, and fully custom. Browse the full catalog at cerakote.com/shop/cerakote-coating. Ready to describe your vision and start a quote?", start: false };
+      }
+      if (t.includes("quote") || t.includes("order") || t.includes("ready") || t.includes("book") || t.includes("start") || t.includes("get a") || t.includes("yes") || t.includes("sure") || t.includes("let's go")) {
+        return { text: "Let's do it. I'll walk you through 12 quick questions to build your custom quote — takes about 2 minutes.", start: true };
+      }
+      return { text: "We specialize in premium Cerakote finishes and precision slide milling for pistols, rifles, and shotguns. Every job includes full disassembly, sandblasting, and a lifetime guarantee. What can I help you with — pricing, our process, colors, FFL shipping, or getting a quote?", start: false };
+    }
+
+    function startIntake() {
+      mode = "intake"; intakeStep = 0; orderData = {};
+      updateProgress();
+      addMsg("Let's build your order. I'll ask " + ORDER_FIELDS.length + " quick questions.", "sys");
+      setTimeout(() => askNext(), 400);
+    }
+
+    function askNext() {
+      if (intakeStep >= ORDER_FIELDS.length) { showReview(); return; }
+      addMsg(ORDER_FIELDS[intakeStep].question, "bot");
+      updateProgress();
+    }
+
+    function handleIntakeAnswer(answer) {
+      orderData[ORDER_FIELDS[intakeStep].key] = answer;
+      intakeStep++;
+      updateProgress();
+      setTimeout(() => { if (intakeStep < ORDER_FIELDS.length) askNext(); else showReview(); }, 300);
+    }
+
+    function showReview() {
+      mode = "review";
+      $("vm-progress").style.display = "none";
+      addMsg("Here's your order summary — please review:", "sys");
+
+      const card = document.createElement("div"); card.className = "vm-summary";
+      const title = document.createElement("div"); title.className = "vm-summary-title"; title.textContent = "Order Summary";
+      card.appendChild(title);
+
+      ORDER_FIELDS.forEach(f => {
+        const val = orderData[f.key] || "—";
+        const row = document.createElement("div"); row.className = "vm-summary-row";
+        const lbl = document.createElement("div"); lbl.className = "vm-summary-label"; lbl.textContent = f.label;
+        const v   = document.createElement("div"); v.className = "vm-summary-val"; v.textContent = val;
+        row.appendChild(lbl); row.appendChild(v); card.appendChild(row);
+      });
+
+      const btn = document.createElement("button"); btn.className = "vm-submit-btn";
+      btn.textContent = "Submit Order Request"; btn.onclick = submitOrder;
+      card.appendChild(btn);
+
+      msgs().appendChild(card);
+      msgs().scrollTop = msgs().scrollHeight;
+      addMsg("Tap 'Submit Order Request' to send to the Vitality team. Or type any correction you'd like to make.", "bot");
+      setEnabled(true);
+    }
+
+    async function submitOrder() {
+      mode = "done"; setEnabled(false);
+      addMsg("Submitting your order request...", "sys");
+
+      const timestamp = new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
+      const payload = { timestamp, ...orderData };
+
+      // 1. Google Sheets
+      if (VM_CONFIG.googleSheetsUrl && VM_CONFIG.googleSheetsUrl !== "YOUR_GOOGLE_SHEETS_WEBAPP_URL") {
+        try {
+          await fetch(VM_CONFIG.googleSheetsUrl, {
+            method: "POST", mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+        } catch(e) { console.warn("Sheets:", e); }
+      }
+
+      // 2. EmailJS (optional)
+      if (VM_CONFIG.emailjsPublicKey && VM_CONFIG.emailjsPublicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
+        try {
+          const summaryText = ORDER_FIELDS.map(f => `${f.label}: ${orderData[f.key] || "—"}`).join("\n");
+          await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              service_id:  VM_CONFIG.emailjsServiceId,
+              template_id: VM_CONFIG.emailjsTemplateId,
+              user_id:     VM_CONFIG.emailjsPublicKey,
+              template_params: {
+                to_email:       VM_CONFIG.notifyEmails.join(","),
+                customer_name:  orderData.name || "Customer",
+                customer_email: orderData.email || "",
+                customer_phone: orderData.phone || "",
+                order_summary:  summaryText,
+                timestamp,
+              },
+            }),
+          });
+        } catch(e) { console.warn("EmailJS:", e); }
+      }
+
+      const successEl = document.createElement("div"); successEl.className = "vm-msg success";
+      successEl.textContent = `✅ Order request submitted! The Vitality team will contact you at ${orderData.email || "your email"} within 1 business day to confirm your quote.\n\nDeposit to lock your bench: $99 (fully applied to your order).\n\nQuestions? Call (360)-839-6679.`;
+      msgs().appendChild(successEl);
+      msgs().scrollTop = msgs().scrollHeight;
+      $("vm-input").placeholder = "Chat closed — thank you!";
+    }
+
+    async function send() {
+      const txt = input().value.trim();
+      if (!txt || busy) return;
+      input().value = "";
+      const b = $("vm-badge"); if (b) b.style.display = "none";
+      addMsg(txt, "user");
+
+      if (mode === "intake") { handleIntakeAnswer(txt); return; }
+      if (mode === "review") { addMsg("Got it — which field would you like to correct? (e.g., 'My email should be...')", "bot"); return; }
+      if (mode === "done") return;
+
+      if (!VM_CONFIG.apiKey || VM_CONFIG.apiKey === "YOUR_API_KEY_HERE") {
+        busy = true; setEnabled(false); showTyping();
+        setTimeout(() => {
+          hideTyping(); busy = false;
+          const r = demoReply(txt);
+          addMsg(r.text, "bot");
+          if (r.start) setTimeout(() => startIntake(), 900);
+          setEnabled(true);
+        }, 650);
+      } else {
+        await callClaude(txt);
+      }
+    }
+
+    function toggle() {
+      open = !open;
+      $("vm-popup").classList.toggle("vm-open", open);
+      $("vm-popup").classList.toggle("vm-closed", !open);
+      const b = $("vm-badge"); if (open && b) b.style.display = "none";
+      if (open) setTimeout(() => input().focus(), 300);
+    }
+
+    function init() {
+      const div = document.createElement("div"); div.className = "vm-msg bot";
+      div.textContent = "Hey there! Welcome to Vitality Modification Company — the nation's premier Cerakote applicator. I can answer questions about our services, pricing, and process, or walk you through getting a custom quote. What can I help you with?";
+      const qbtns = document.createElement("div"); qbtns.className = "vm-qbtns";
+      ["Pricing & packages","Slide milling","Our process","FFL shipping","Get a quote"].forEach(q => {
+        const b = document.createElement("button"); b.className = "vm-qbtn"; b.textContent = q;
+        b.onclick = () => { input().value = q; send(); };
+        qbtns.appendChild(b);
+      });
+      div.appendChild(qbtns);
+      msgs().appendChild(div);
+    }
+
+    return { init, toggle, send };
+  })();
+
+  VM.init();
+  </script>
+
+  <!-- ═══ END VITALITY WIDGET v3.0 ═══ -->
+
+</body>
+</html>
